@@ -1,6 +1,7 @@
 package com.mauricioquirogadev.control_panel.controllers;
 
 import com.mauricioquirogadev.control_panel.entities.Customer;
+import com.mauricioquirogadev.control_panel.entities.dtos.CustomerDTO;
 import com.mauricioquirogadev.control_panel.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,19 +18,19 @@ public class CustomerController {
 
     //obtener un cliente por id
     @GetMapping("/{id}")
-    public Customer getCustomer(@PathVariable Integer id) {
+    public CustomerDTO getCustomer(@PathVariable Integer id) {
         return service.getCustomer(id);
     }
     //obtener todos los clientes
     @GetMapping("/getAll")
-    public List<Customer> getAllCustomer(){
+    public List<CustomerDTO> getAllCustomer(){
 
         return service.getAllCustomer();
     }
     //agregar un nuevo cliente
     @PostMapping("/add")
     //es importante la anotacion requesbody
-    public List<Customer> addCustomer( @RequestBody Customer customer){
+    public List<CustomerDTO> addCustomer( @RequestBody Customer customer){
         return service.addCustomer(customer);
     }
     //eliminar un cliente por id
@@ -40,12 +41,12 @@ public class CustomerController {
     //actualiza un cliente definido por el id
     @PutMapping("/update/{id}")
 
-    public Customer updateCustomer(@PathVariable Integer id, @RequestBody Customer updatedCustomer) {
+    public CustomerDTO updateCustomer(@PathVariable Integer id, @RequestBody CustomerDTO updatedCustomer) {
         return service.updateCustomer(id,updatedCustomer);
     }
     //buscar customers en base a parametros
     @GetMapping("/search")
-    public List<Customer> searchCustomers(
+    public List<CustomerDTO> searchCustomers(
             @RequestParam(required = false) String firstname,
             @RequestParam(required = false) String lastname,
             @RequestParam(required = false) String email,

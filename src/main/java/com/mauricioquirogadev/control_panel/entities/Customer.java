@@ -1,5 +1,6 @@
 package com.mauricioquirogadev.control_panel.entities;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
@@ -7,7 +8,11 @@ import java.util.Objects;
 //@Getter @Setter @AllArgsConstructor @NoArgsConstructor @EqualsAndHashCode @ToString
 //las anotaciones de arriba son sustituidas por una sola-> @Data
 @Data
+@Entity
+@Table (name="customer")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstname;
     private String lastname;
